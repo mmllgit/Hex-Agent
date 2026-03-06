@@ -1,0 +1,36 @@
+{
+  "name": "lol-aram-agent-backend",
+  "version": "1.0.0",
+  "description": "英雄联盟海克斯大乱斗国服 AI Agent 后端",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "seed": "tsx src/db/seed.ts",
+    "crawl": "tsx src/db/crawlChampions.ts",
+    "crawl:hextech": "tsx src/db/crawlHextech.ts",
+    "crawl:interactions": "tsx src/db/crawlChampionHextech.ts",
+    "crawl:all": "tsx src/db/crawlChampions.ts && tsx src/db/crawlHextech.ts && tsx src/db/crawlChampionHextech.ts"
+  },
+  "dependencies": {
+    "@langchain/core": "^0.3",
+    "@langchain/langgraph": "^0.2",
+    "@langchain/openai": "^0.3",
+    "axios": "^1.13.6",
+    "cheerio": "^1.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4",
+    "express": "^4.21",
+    "langchain": "^0.3",
+    "mongoose": "^8.9"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.35",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0",
+    "@types/node": "^22",
+    "tsx": "^4.19",
+    "typescript": "^5.7"
+  }
+}
