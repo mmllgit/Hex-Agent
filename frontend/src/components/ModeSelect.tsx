@@ -13,7 +13,7 @@ const MODES = [
 export default function ModeSelect({ selected, onSelect }: Props) {
   return (
     <div>
-      <label className="block text-gold-400 text-sm font-semibold mb-2">
+      <label className="block text-brand-300 text-sm font-semibold mb-2">
         模式选择
       </label>
       <div className="space-y-2">
@@ -23,8 +23,8 @@ export default function ModeSelect({ selected, onSelect }: Props) {
             onClick={() => onSelect(mode.value)}
             className={`w-full text-left px-4 py-3 rounded-lg border transition-all ${
               selected === mode.value
-                ? "bg-lol-blue/20 border-lol-accent text-lol-accent"
-                : "bg-lol-light border-lol-surface text-lol-muted hover:border-gold-400/50 hover:text-gray-200"
+                ? "bg-brand-500/20 border-brand-400/50 text-brand-200"
+                : "bg-lol-light/60 border-lol-surface/50 text-lol-muted hover:border-brand-400/30 hover:text-gray-200"
             }`}
           >
             {mode.label}

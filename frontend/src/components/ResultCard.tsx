@@ -4,27 +4,27 @@ interface Props {
   title: string;
   icon: string;
   description: string;
-  color: "blue" | "gold" | "green";
+  color: "blue" | "cyan" | "indigo";
 }
 
 const colorMap = {
   blue: {
-    border: "border-lol-blue/30",
-    bg: "bg-lol-blue/10",
-    title: "text-lol-blue",
-    icon: "bg-lol-blue/15",
+    border: "border-brand-400/25",
+    bg: "bg-brand-400/8",
+    title: "text-brand-300",
+    icon: "bg-brand-400/15",
   },
-  gold: {
-    border: "border-gold-400/30",
-    bg: "bg-gold-400/10",
-    title: "text-gold-400",
-    icon: "bg-gold-400/15",
-  },
-  green: {
-    border: "border-lol-accent/30",
-    bg: "bg-lol-accent/10",
+  cyan: {
+    border: "border-lol-accent/25",
+    bg: "bg-lol-accent/8",
     title: "text-lol-accent",
     icon: "bg-lol-accent/15",
+  },
+  indigo: {
+    border: "border-blue-400/25",
+    bg: "bg-blue-400/8",
+    title: "text-blue-300",
+    icon: "bg-blue-400/15",
   },
 };
 

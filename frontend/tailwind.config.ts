@@ -5,20 +5,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        gold: {
-          300: "#F0D6A0",
-          400: "#D4A84B",
-          500: "#C8AA6E",
-          600: "#A07A2F",
+        brand: {
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BAD6FF",
+          300: "#7EB8FF",
+          400: "#4A9EFF",
+          500: "#2B7FED",
+          600: "#1D6AD8",
         },
         lol: {
-          dark: "#1A2332",
-          darker: "#212D3B",
-          light: "#2A3A4E",
-          surface: "#314559",
-          blue: "#1B98D5",
-          accent: "#21D4C4",
-          muted: "#8694A5",
+          dark: "#1B3A5C",
+          darker: "#1F3F64",
+          light: "#2A5280",
+          surface: "#3A6498",
+          blue: "#4A9EFF",
+          accent: "#5EC4E6",
+          muted: "#94B0CC",
         },
       },
     },

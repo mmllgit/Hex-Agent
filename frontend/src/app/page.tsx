@@ -32,11 +32,11 @@ export default function Home() {
 
   const sidebarContent = (
     <>
-      <div className="p-4 md:p-6 border-b border-lol-light flex items-center justify-between">
+      <div className="p-4 md:p-6 border-b border-lol-light/60 flex items-center justify-between">
         <div>
-          <h1 className="text-lg md:text-xl font-bold text-gold-300 flex items-center gap-2">
+          <h1 className="text-lg md:text-xl font-bold text-brand-200 flex items-center gap-2">
             <span className="text-xl md:text-2xl">⚔️</span>
-            海克斯大乱斗助手
+            海克斯大乱斗AI助手
           </h1>
           <p className="text-xs text-lol-muted mt-1">国服 AI 攻略系统</p>
         </div>
@@ -67,7 +67,7 @@ export default function Home() {
         <ModeSelect selected={selectedMode} onSelect={setSelectedMode} />
 
         <div className="space-y-3">
-          <h3 className="text-gold-400 text-sm font-semibold">功能说明</h3>
+          <h3 className="text-brand-300 text-sm font-semibold">功能说明</h3>
           <ResultCard
             title="英雄玩法分析"
             icon="🎮"
@@ -78,18 +78,18 @@ export default function Home() {
             title="海克斯搭配推荐"
             icon="💎"
             description="最佳海克斯组合及胜率数据"
-            color="gold"
+            color="cyan"
           />
           <ResultCard
             title="技巧与打法"
             icon="📋"
             description="操作连招、注意事项等"
-            color="green"
+            color="indigo"
           />
         </div>
       </div>
 
-      <div className="p-4 border-t border-lol-light text-xs text-lol-muted text-center">
+      <div className="p-4 border-t border-lol-light/60 text-xs text-lol-muted text-center">
         Powered by MMLL
       </div>
     </>
@@ -98,7 +98,7 @@ export default function Home() {
   return (
     <div className="flex h-dvh overflow-hidden">
       {/* Desktop sidebar */}
-      <aside className="hidden md:flex md:w-80 bg-lol-darker border-r border-lol-light flex-col shrink-0">
+      <aside className="hidden md:flex md:w-80 bg-lol-darker border-r border-lol-light/40 flex-col shrink-0">
         {sidebarContent}
       </aside>
 
@@ -122,7 +122,7 @@ export default function Home() {
       {/* Main chat area */}
       <main className="flex-1 flex flex-col bg-lol-dark min-w-0">
         {/* Mobile top bar */}
-        <div className="md:hidden bg-lol-darker border-b border-lol-light px-4 py-3 flex items-center gap-3">
+        <div className="md:hidden bg-lol-darker border-b border-lol-light/40 px-4 py-3 flex items-center gap-3">
           <button
             onClick={() => setSidebarOpen(true)}
             className="p-1 -ml-1 text-lol-muted hover:text-white transition-colors"
@@ -132,8 +132,8 @@ export default function Home() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
-          <h1 className="text-sm font-bold text-gold-300 truncate">
-            ⚔️ 海克斯大乱斗助手
+          <h1 className="text-sm font-bold text-brand-200 truncate">
+            ⚔️ 海克斯大乱斗AI助手
           </h1>
           {selectedChampion && (
             <span className="ml-auto text-xs text-lol-accent truncate">
@@ -144,11 +144,11 @@ export default function Home() {
 
         {/* Desktop champion bar */}
         {selectedChampion && (
-          <div className="hidden md:flex bg-lol-darker border-b border-lol-light px-6 py-3 items-center gap-3">
-            <span className="text-lol-accent font-semibold">
+          <div className="hidden md:flex bg-lol-darker border-b border-lol-light/40 px-6 py-3 items-center gap-3">
+            <span className="text-brand-300 font-semibold">
               {selectedChampion}
             </span>
-            <span className="text-lol-muted">|</span>
+            <span className="text-lol-light">|</span>
             <span className="text-lol-muted text-sm">{selectedMode}</span>
           </div>
         )}

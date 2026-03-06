@@ -24,22 +24,22 @@ const MarkdownMessage = memo(function MarkdownMessage({
     <ReactMarkdown
       components={{
         h1: ({ children }) => (
-          <h1 className="text-2xl font-bold text-gold-300 mb-3 mt-4">
+          <h1 className="text-2xl font-bold text-brand-200 mb-3 mt-4">
             {children}
           </h1>
         ),
         h2: ({ children }) => (
-          <h2 className="text-xl font-bold text-gold-400 mb-2 mt-3">
+          <h2 className="text-xl font-bold text-brand-300 mb-2 mt-3">
             {children}
           </h2>
         ),
         h3: ({ children }) => (
-          <h3 className="text-lg font-semibold text-gold-400 mb-2 mt-3">
+          <h3 className="text-lg font-semibold text-brand-300 mb-2 mt-3">
             {children}
           </h3>
         ),
         strong: ({ children }) => (
-          <strong className="text-gold-300 font-semibold">{children}</strong>
+          <strong className="text-brand-200 font-semibold">{children}</strong>
         ),
         code: ({ children }) => (
           <code className="bg-lol-light px-1.5 py-0.5 rounded text-lol-accent text-sm">
@@ -133,8 +133,8 @@ export default function ChatPanel({ champion, mode }: Props) {
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center space-y-4 px-4">
             <div className="text-4xl md:text-6xl">⚔️</div>
-            <h2 className="text-xl md:text-2xl font-bold text-gold-300">
-              海克斯大乱斗攻略助手
+            <h2 className="text-xl md:text-2xl font-bold text-brand-200">
+              海克斯大乱斗AI助手
             </h2>
             <p className="text-lol-muted max-w-md text-sm md:text-base">
               选择英雄和模式后，点击下方按钮或输入问题，AI 将为你提供专业的攻略建议。
@@ -142,7 +142,7 @@ export default function ChatPanel({ champion, mode }: Props) {
             {champion && (
               <button
                 onClick={handleQuickStart}
-                className="bg-gradient-to-r from-lol-blue to-lol-accent text-white px-5 py-3 rounded-lg font-semibold hover:opacity-90 active:opacity-80 transition-opacity shadow-lg shadow-lol-blue/20 text-sm md:text-base md:px-6"
+                className="bg-gradient-to-r from-brand-500 to-brand-400 text-white px-5 py-3 rounded-lg font-semibold hover:opacity-90 active:opacity-80 transition-opacity shadow-lg shadow-brand-500/25 text-sm md:text-base md:px-6"
               >
                 为「{champion}」生成攻略
               </button>
@@ -158,8 +158,8 @@ export default function ChatPanel({ champion, mode }: Props) {
             <div
               className={`max-w-[92%] sm:max-w-[85%] rounded-2xl px-3 py-2.5 md:px-4 md:py-3 ${
                 msg.role === "user"
-                  ? "bg-lol-blue/25 text-white rounded-br-md"
-                  : "bg-lol-darker border border-lol-light text-gray-100 rounded-bl-md"
+                  ? "bg-brand-500/20 border border-brand-400/20 text-white rounded-br-md"
+                  : "bg-lol-darker border border-lol-light/50 text-gray-100 rounded-bl-md"
               }`}
             >
               {msg.role === "assistant" ? (
@@ -169,9 +169,9 @@ export default function ChatPanel({ champion, mode }: Props) {
               )}
               {msg.role === "assistant" && msg.content === "" && loading && (
                 <div className="flex space-x-1.5 py-2">
-                  <span className="w-2 h-2 bg-lol-accent rounded-full animate-bounce" />
-                  <span className="w-2 h-2 bg-lol-accent rounded-full animate-bounce [animation-delay:0.15s]" />
-                  <span className="w-2 h-2 bg-lol-accent rounded-full animate-bounce [animation-delay:0.3s]" />
+                  <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce" />
+                  <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce [animation-delay:0.15s]" />
+                  <span className="w-2 h-2 bg-brand-400 rounded-full animate-bounce [animation-delay:0.3s]" />
                 </div>
               )}
             </div>
@@ -179,7 +179,7 @@ export default function ChatPanel({ champion, mode }: Props) {
         ))}
       </div>
 
-      <div className="border-t border-lol-light p-3 md:p-4 bg-lol-darker/50">
+      <div className="border-t border-lol-light/40 p-3 md:p-4 bg-lol-darker/60 backdrop-blur-sm">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -197,12 +197,12 @@ export default function ChatPanel({ champion, mode }: Props) {
                 : "请先选择英雄..."
             }
             disabled={loading}
-            className="flex-1 min-w-0 bg-lol-light border border-lol-surface rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white placeholder-lol-muted focus:outline-none focus:border-lol-blue transition-colors disabled:opacity-50"
+            className="flex-1 min-w-0 bg-lol-light/60 border border-lol-surface/50 rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white placeholder-lol-muted focus:outline-none focus:border-brand-400/60 focus:ring-1 focus:ring-brand-400/20 transition-all disabled:opacity-50"
           />
           <button
             type="submit"
             disabled={loading || (!input.trim() && !champion)}
-            className="bg-gradient-to-r from-lol-blue to-lol-accent text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base hover:opacity-90 active:opacity-80 transition-opacity disabled:opacity-40 shadow-md shadow-lol-blue/20 shrink-0"
+            className="bg-gradient-to-r from-brand-500 to-brand-400 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base hover:opacity-90 active:opacity-80 transition-opacity disabled:opacity-40 shadow-md shadow-brand-500/20 shrink-0"
           >
             {loading ? "..." : "发送"}
           </button>

@@ -3,17 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --lol-dark: #1A2332;
-  --lol-darker: #212D3B;
-  --lol-light: #2A3A4E;
-  --lol-gold: #C8AA6E;
-  --lol-blue: #1B98D5;
-  --lol-accent: #21D4C4;
+  --lol-dark: #1B3A5C;
+  --lol-darker: #1F3F64;
+  --lol-light: #2A5280;
+  --lol-blue: #4A9EFF;
+  --lol-accent: #5EC4E6;
 }
 
 body {
   background-color: var(--lol-dark);
-  color: #E8ECF1;
+  color: #E2EAF4;
 }
 
 @media (pointer: fine) {
@@ -26,19 +25,19 @@ body {
   }
 
   ::-webkit-scrollbar-thumb {
-    background: var(--lol-gold);
+    background: var(--lol-blue);
     border-radius: 3px;
   }
 }
 
 .markdown-content h1 {
-  @apply text-2xl font-bold text-gold-300 mb-3 mt-4;
+  @apply text-2xl font-bold text-brand-200 mb-3 mt-4;
 }
 .markdown-content h2 {
-  @apply text-xl font-bold text-gold-400 mb-2 mt-3;
+  @apply text-xl font-bold text-brand-300 mb-2 mt-3;
 }
 .markdown-content h3 {
-  @apply text-lg font-semibold text-gold-400 mb-2 mt-3;
+  @apply text-lg font-semibold text-brand-300 mb-2 mt-3;
 }
 .markdown-content p {
   @apply mb-2 leading-relaxed;
@@ -53,7 +52,7 @@ body {
   @apply text-gray-200;
 }
 .markdown-content strong {
-  @apply text-gold-300 font-semibold;
+  @apply text-brand-200 font-semibold;
 }
 .markdown-content code {
   @apply bg-lol-light px-1.5 py-0.5 rounded text-lol-accent text-sm;

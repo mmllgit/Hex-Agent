@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LOL 海克斯大乱斗助手",
+  title: "海克斯大乱斗AI助手",
   description: "英雄联盟海克斯大乱斗国服 AI Agent 攻略系统",
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({

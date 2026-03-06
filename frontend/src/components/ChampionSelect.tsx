@@ -32,12 +32,12 @@ export default function ChampionSelect({
 
   return (
     <div className="relative">
-      <label className="block text-gold-400 text-sm font-semibold mb-2">
+      <label className="block text-brand-300 text-sm font-semibold mb-2">
         选择英雄
       </label>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between bg-lol-light border border-lol-surface rounded-lg px-4 py-3 text-left hover:border-gold-400/60 transition-colors"
+        className="w-full flex items-center justify-between bg-lol-light/60 border border-lol-surface/50 rounded-lg px-4 py-3 text-left hover:border-brand-400/50 transition-colors"
       >
         <span className={selected ? "text-white" : "text-lol-muted"}>
           {selectedChamp
@@ -45,7 +45,7 @@ export default function ChampionSelect({
             : "点击选择英雄..."}
         </span>
         <svg
-          className={`w-4 h-4 text-gold-400 transition-transform ${open ? "rotate-180" : ""}`}
+          className={`w-4 h-4 text-brand-400 transition-transform ${open ? "rotate-180" : ""}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -60,14 +60,14 @@ export default function ChampionSelect({
       </button>
 
       {open && (
-        <div className="absolute z-50 mt-1 w-full bg-lol-darker border border-lol-surface rounded-lg shadow-2xl max-h-60 md:max-h-72 overflow-hidden">
-          <div className="p-2 border-b border-lol-light">
+        <div className="absolute z-50 mt-1 w-full bg-lol-darker border border-lol-surface/50 rounded-lg shadow-2xl shadow-black/40 max-h-60 md:max-h-72 overflow-hidden">
+          <div className="p-2 border-b border-lol-light/60">
             <input
               type="text"
               placeholder="搜索英雄名称..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-lol-light border border-lol-surface rounded px-3 py-2.5 md:py-2 text-sm text-white placeholder-lol-muted focus:outline-none focus:border-lol-blue"
+              className="w-full bg-lol-light/60 border border-lol-surface/50 rounded px-3 py-2.5 md:py-2 text-sm text-white placeholder-lol-muted focus:outline-none focus:border-brand-400/60"
               autoFocus
             />
           </div>
@@ -80,9 +80,9 @@ export default function ChampionSelect({
                   setOpen(false);
                   setSearch("");
                 }}
-                className={`w-full flex items-center justify-between px-4 py-3 md:py-2.5 min-h-[44px] text-sm hover:bg-lol-blue/15 active:bg-lol-blue/25 transition-colors ${
+                className={`w-full flex items-center justify-between px-4 py-3 md:py-2.5 min-h-[44px] text-sm hover:bg-brand-500/15 active:bg-brand-500/25 transition-colors ${
                   selected === champ.name
-                    ? "bg-lol-blue/20 text-lol-accent"
+                    ? "bg-brand-500/20 text-brand-300"
                     : "text-gray-200"
                 }`}
               >

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2B7FED"/>
+      <stop offset="100%" stop-color="#4A9EFF"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="20" y1="16" x2="44" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#BAD6FF"/>
+      <stop offset="100%" stop-color="#5EC4E6"/>
+    </linearGradient>
+  </defs>
+  <!-- Hexagon background -->
+  <path d="M32 4 L56 18 L56 46 L32 60 L8 46 L8 18 Z" fill="url(#bg)" stroke="#1B3A5C" stroke-width="1.5"/>
+  <!-- Inner hexagon -->
+  <path d="M32 14 L46 22 L46 38 L32 46 L18 38 L18 22 Z" fill="none" stroke="url(#inner)" stroke-width="2"/>
+  <!-- Sword / cross -->
+  <line x1="32" y1="18" x2="32" y2="46" stroke="#EFF6FF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="24" y1="28" x2="40" y2="28" stroke="#EFF6FF" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Gem dots -->
+  <circle cx="32" cy="18" r="2.5" fill="#5EC4E6"/>
+  <circle cx="32" cy="46" r="2" fill="#5EC4E6"/>
+</svg>
