@@ -11,7 +11,8 @@
     "crawl": "tsx src/db/crawlChampions.ts",
     "crawl:hextech": "tsx src/db/crawlHextech.ts",
     "crawl:interactions": "tsx src/db/crawlChampionHextech.ts",
-    "crawl:all": "tsx src/db/crawlChampions.ts && tsx src/db/crawlHextech.ts && tsx src/db/crawlChampionHextech.ts"
+    "crawl:all": "tsx src/db/crawlChampions.ts && tsx src/db/crawlHextech.ts && tsx src/db/crawlChampionHextech.ts",
+    "seed:aliases": "tsx src/db/seedAliases.ts"
   },
   "dependencies": {
     "@langchain/core": "^0.3",

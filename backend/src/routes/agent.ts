@@ -9,8 +9,8 @@ router.post("/chat", async (req: Request, res: Response) => {
   try {
     const { champion, mode, message } = req.body as ChatRequest;
 
-    if (!message && !champion) {
-      res.status(400).json({ error: "请提供消息内容或选择一个英雄" });
+    if (!message) {
+      res.status(400).json({ error: "请提供消息内容" });
       return;
     }
 

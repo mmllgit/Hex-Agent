@@ -3,6 +3,7 @@ import mongoose, { Schema, Document } from "mongoose";
 export interface IChampion extends Document {
   name: string;
   nameEn: string;
+  aliases: string[];
   roles: string[];
   skills: {
     passive: string;
@@ -21,6 +22,7 @@ export interface IChampion extends Document {
 const ChampionSchema = new Schema<IChampion>({
   name: { type: String, required: true, unique: true, index: true },
   nameEn: { type: String, required: true },
+  aliases: { type: [String], default: [], index: true },
   roles: [String],
   skills: {
     passive: String,

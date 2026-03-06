@@ -11,7 +11,7 @@ import {
   fetchPage,
   updateChampionData,
 } from "../tools/index.js";
-import { SYSTEM_PROMPT } from "./prompts.js";
+import { buildSystemPrompt } from "./prompts.js";
 
 const tools = [
   championLookup,
@@ -26,7 +26,7 @@ const tools = [
 
 function createLLM() {
   return new ChatOpenAI({
-    modelName: process.env.LLM_MODEL || "deepseek-ai/DeepSeek-V3",
+    modelName: process.env.LLM_MODEL || "Qwen/Qwen3.5-122B-A10B",
     temperature: 0.7,
     streaming: true,
     configuration: {
@@ -48,9 +48,10 @@ export interface ChatRequest {
 
 export async function chat(req: ChatRequest): Promise<string> {
   const userMsg = buildUserMessage(req);
+  const systemPrompt = buildSystemPrompt();
 
   const result = await agent.invoke({
-    messages: [new SystemMessage(SYSTEM_PROMPT), new HumanMessage(userMsg)],
+    messages: [new SystemMessage(systemPrompt), new HumanMessage(userMsg)],
   });
 
   const lastMessage = result.messages[result.messages.length - 1];
@@ -63,10 +64,11 @@ export async function* chatStream(
   req: ChatRequest
 ): AsyncGenerator<string, void, unknown> {
   const userMsg = buildUserMessage(req);
+  const systemPrompt = buildSystemPrompt();
 
   const stream = await agent.stream(
     {
-      messages: [new SystemMessage(SYSTEM_PROMPT), new HumanMessage(userMsg)],
+      messages: [new SystemMessage(systemPrompt), new HumanMessage(userMsg)],
     },
     { streamMode: "messages" }
   );
@@ -83,11 +85,11 @@ export async function* chatStream(
 }
 
 function buildUserMessage(req: ChatRequest): string {
-  if (req.champion && req.mode) {
-    return `我选择了英雄「${req.champion}」，模式是「${req.mode}」。${req.message || "请给我提供完整的攻略建议。"}`;
+  if (req.champion && req.message) {
+    return `（用户在侧边栏选择了英雄「${req.champion}」，模式「${req.mode || "海克斯大乱斗"}」，但请以用户实际输入的问题为准，如果问题涉及其他英雄则以问题中的英雄为准）\n\n${req.message}`;
   }
   if (req.champion) {
-    return `关于英雄「${req.champion}」在大乱斗中：${req.message || "请给我提供完整的攻略建议。"}`;
+    return `请给我「${req.champion}」在${req.mode || "海克斯大乱斗"}中的完整攻略建议。`;
   }
   return req.message;
 }

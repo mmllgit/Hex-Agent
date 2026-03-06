@@ -21,47 +21,7 @@ const MarkdownMessage = memo(function MarkdownMessage({
 }) {
   return (
     <div className="markdown-content prose prose-invert max-w-none">
-    <ReactMarkdown
-      components={{
-        h1: ({ children }) => (
-          <h1 className="text-2xl font-bold text-brand-200 mb-3 mt-4">
-            {children}
-          </h1>
-        ),
-        h2: ({ children }) => (
-          <h2 className="text-xl font-bold text-brand-300 mb-2 mt-3">
-            {children}
-          </h2>
-        ),
-        h3: ({ children }) => (
-          <h3 className="text-lg font-semibold text-brand-300 mb-2 mt-3">
-            {children}
-          </h3>
-        ),
-        strong: ({ children }) => (
-          <strong className="text-brand-200 font-semibold">{children}</strong>
-        ),
-        code: ({ children }) => (
-          <code className="bg-lol-light px-1.5 py-0.5 rounded text-lol-accent text-sm">
-            {children}
-          </code>
-        ),
-        ul: ({ children }) => (
-          <ul className="list-disc list-inside mb-2 space-y-1">{children}</ul>
-        ),
-        ol: ({ children }) => (
-          <ol className="list-decimal list-inside mb-2 space-y-1">
-            {children}
-          </ol>
-        ),
-        li: ({ children }) => (
-          <li className="text-gray-200">{children}</li>
-        ),
-        p: ({ children }) => (
-          <p className="mb-2 leading-relaxed">{children}</p>
-        ),
-      }}
-    >
+    <ReactMarkdown>
       {content}
     </ReactMarkdown>
     </div>
@@ -83,10 +43,9 @@ export default function ChatPanel({ champion, mode }: Props) {
 
   const handleSend = async (customMsg?: string) => {
     const text = customMsg || input.trim();
-    if (!text && !champion) return;
+    if (!text) return;
 
-    const userMessage = text || `请分析「${champion}」在${mode}中的攻略`;
-    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
+    setMessages((prev) => [...prev, { role: "user", content: text }]);
     setInput("");
     setLoading(true);
 
@@ -95,7 +54,7 @@ export default function ChatPanel({ champion, mode }: Props) {
       setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
 
       for await (const chunk of streamChat({
-        champion,
+        champion: champion || undefined,
         mode,
         message: text,
       })) {
@@ -137,7 +96,9 @@ export default function ChatPanel({ champion, mode }: Props) {
               海克斯大乱斗AI助手
             </h2>
             <p className="text-lol-muted max-w-md text-sm md:text-base">
-              选择英雄和模式后，点击下方按钮或输入问题，AI 将为你提供专业的攻略建议。
+              {champion
+                ? "点击下方按钮生成攻略，或直接输入你的问题。"
+                : "直接输入英雄名或问题即可开始，如「提莫怎么玩」「快乐风男出装」。也可以在左侧选择英雄。"}
             </p>
             {champion && (
               <button
@@ -194,14 +155,14 @@ export default function ChatPanel({ champion, mode }: Props) {
             placeholder={
               champion
                 ? `关于${champion}的问题...`
-                : "请先选择英雄..."
+                : "输入英雄名或问题，如「亚索怎么玩」..."
             }
             disabled={loading}
             className="flex-1 min-w-0 bg-lol-light/60 border border-lol-surface/50 rounded-xl px-3 py-2.5 md:px-4 md:py-3 text-sm md:text-base text-white placeholder-lol-muted focus:outline-none focus:border-brand-400/60 focus:ring-1 focus:ring-brand-400/20 transition-all disabled:opacity-50"
           />
           <button
             type="submit"
-            disabled={loading || (!input.trim() && !champion)}
+            disabled={loading || !input.trim()}
             className="bg-gradient-to-r from-brand-500 to-brand-400 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-xl font-semibold text-sm md:text-base hover:opacity-90 active:opacity-80 transition-opacity disabled:opacity-40 shadow-md shadow-brand-500/20 shrink-0"
           >
             {loading ? "..." : "发送"}
