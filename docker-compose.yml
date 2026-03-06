@@ -2,8 +2,6 @@ services:
   mongodb:
     image: mongo:7
     container_name: lol-agent-mongo
-    ports:
-      - "27017:27017"
     volumes:
       - mongo-data:/data/db
     environment:
@@ -13,8 +11,6 @@ services:
   backend:
     build: ./backend
     container_name: lol-agent-backend
-    ports:
-      - "3001:3001"
     depends_on:
       - mongodb
     environment:
@@ -29,7 +25,7 @@ services:
     build:
       context: ./frontend
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:3001}
+        BACKEND_INTERNAL_URL: http://backend:3001
     container_name: lol-agent-frontend
     ports:
       - "3000:3000"
