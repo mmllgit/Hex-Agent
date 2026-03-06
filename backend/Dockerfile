@@ -16,9 +16,7 @@ COPY package.json package-lock.json* ./
 RUN npm install --omit=dev
 
 COPY --from=builder /app/dist ./dist
-COPY docker-entrypoint.sh ./
-RUN chmod +x docker-entrypoint.sh
 
 EXPOSE 3001
 
-ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["node", "dist/index.js"]

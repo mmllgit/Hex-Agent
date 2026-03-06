@@ -15,10 +15,11 @@ services:
       - "3001:3001"
     depends_on:
       - mongodb
-    env_file:
-      - ./backend/.env
     environment:
       MONGODB_URI: mongodb://mongodb:27017/lol_agent
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      LLM_BASE_URL: ${LLM_BASE_URL:-https://api.siliconflow.cn/v1}
+      LLM_MODEL: ${LLM_MODEL:-deepseek-ai/DeepSeek-V3}
       PORT: "3001"
     restart: unless-stopped
 
